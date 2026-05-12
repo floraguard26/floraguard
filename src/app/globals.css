@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+/* ── FloraGuard Design Tokens ─────────────────────────────── */
+@theme {
+  /* Brand green palette */
+  --color-flora-50: #f0fdf4;
+  --color-flora-100: #dcfce7;
+  --color-flora-200: #bbf7d0;
+  --color-flora-300: #86efac;
+  --color-flora-400: #4ade80;
+  --color-flora-500: #22c55e;
+  --color-flora-600: #16a34a;
+  --color-flora-700: #15803d;
+  --color-flora-800: #166534;
+  --color-flora-900: #14532d;
+  --color-flora-950: #052e16;
+
+  /* Typography — system font stack (no external font download needed) */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Spacing & radius tokens */
+  --radius-card: 0.75rem;
+  --radius-btn: 0.5rem;
+}
+
+/* ── Base Styles ──────────────────────────────────────────── */
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Focus ring — accessible keyboard nav ─────────────────── */
+*:focus-visible {
+  outline: 2px solid #16a34a;
+  outline-offset: 2px;
+}
+
+/* ── Typing animation for Gemini streaming output ─────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink::after {
+  content: "▋";
+  animation: blink 1s step-start infinite;
+  color: #16a34a;
+}
+
+/* ── Skeleton shimmer animation ──────────────────────────── */
+@keyframes shimmer {
+  0% { background-position: -468px 0; }
+  100% { background-position: 468px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    to right,
+    #f3f4f6 4%,
+    #e5e7eb 25%,
+    #f3f4f6 36%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f9fafb; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
