@@ -44,7 +44,7 @@ export function GeminiOutput({ text, loading }: GeminiOutputProps) {
     return (
       <div className="rounded-xl border border-gray-200 bg-gray-50 p-6 text-center space-y-3">
         <Spinner size="lg" className="mx-auto" />
-        <p className="text-sm text-gray-500">Generating AI recommendations…</p>
+        <p className="text-sm text-gray-500">Generating recommendations…</p>
       </div>
     );
   }
@@ -57,8 +57,7 @@ export function GeminiOutput({ text, loading }: GeminiOutputProps) {
       <div className="flex items-center justify-between px-5 py-3 border-b border-flora-200 bg-flora-100/50">
         <div className="flex items-center gap-2 text-flora-700">
           <Sparkles className="h-4 w-4" aria-hidden="true" />
-          <span className="text-sm font-semibold">AI Recommendations</span>
-          <span className="text-xs text-flora-500 bg-flora-200 rounded px-1.5 py-0.5">Gemini</span>
+          <span className="text-sm font-semibold">Recommendations</span>
         </div>
         <Button
           variant="ghost"
@@ -83,14 +82,6 @@ export function GeminiOutput({ text, loading }: GeminiOutputProps) {
         aria-label="AI generated recommendations"
       >
         {displayed}
-      </div>
-
-      {/* Disclaimer */}
-      <div className="flex items-start gap-2 mx-5 mb-4 p-3 rounded-lg bg-amber-50 border border-amber-200">
-        <AlertTriangle className="h-4 w-4 text-amber-600 shrink-0 mt-0.5" aria-hidden="true" />
-        <p className="text-xs text-amber-700">
-          AI suggestions are informational only. Always consult a certified agronomist before applying treatments.
-        </p>
       </div>
     </div>
   );
