@@ -147,14 +147,7 @@ export default function TryPage() {
             )}
           </div>
 
-          {/* Disclaimer */}
-          <div className="rounded-xl border border-amber-200 bg-amber-50 p-4">
-            <p className="text-xs text-amber-700">
-              <strong>Disclaimer:</strong> AI detections are informational. Always consult a
-              certified agronomist before applying treatments to commercially significant crops.
-            </p>
-          </div>
-        </div>
+          
 
         {/* Right: Results */}
         <div className="space-y-6">
