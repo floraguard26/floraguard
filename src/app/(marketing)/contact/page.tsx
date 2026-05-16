@@ -57,9 +57,9 @@ export default function ContactPage() {
             <h2 className="text-xl font-semibold text-gray-900 mb-6">Contact Information</h2>
             <div className="space-y-5">
               {[
-                { icon: Mail, label: "Email", value: "hello@floraguard.ai" },
-                { icon: Phone, label: "Phone", value: "+1 (800) FLORA-AI" },
-                { icon: MapPin, label: "Location", value: "San Francisco, CA, USA" },
+                { icon: Mail, label: "Email", value: "floraguard26@gmail.com" },
+                { icon: Phone, label: "Phone", value: "+91 91502 47177" },
+                { icon: MapPin, label: "Location", value: "Mandaveli, Chennai - 600004" },
               ].map(({ icon: Icon, label, value }) => (
                 <div key={label} className="flex items-center gap-4">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-flora-100">
@@ -77,7 +77,7 @@ export default function ContactPage() {
               <h3 className="font-semibold text-flora-800 mb-1">Sales Inquiries</h3>
               <p className="text-sm text-flora-700">
                 Looking for Enterprise pricing or a demo? Email us at{" "}
-                <span className="font-medium">sales@floraguard.ai</span> or use the form on the
+                <span className="font-medium">floraguard26@gmail.com</span> or use the form on the
                 Pricing page.
               </p>
             </div>
