@@ -78,13 +78,29 @@ export default function TryPage() {
       const recRes = await fetch("/api/recommendations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ scanId, topLabels: ml.topLabels, detections: ml.detections }),
+        body: JSON.stringify({ 
+          scanId, 
+          topLabels: ml.topLabels, 
+          // FIX: Pass empty array if backend detections field doesn't exist
+          detections: ml.detections || [] 
+        }),
       });
+      
+      if (!recRes.ok) {
+        const json = await recRes.json();
+        throw new Error(json.error ?? "Failed to fetch recommendations");
+      }
+      
       const { recommendation } = await recRes.json();
 
       setResult((prev) => prev ? { ...prev, recommendation } : null);
       setState("done");
-      toast("success", "Analysis complete!", `Detected: ${ml.topLabels[0]?.label ?? "no disease"}`);
+      
+      // Clean up underscores from label display in the toast notification
+      const rawLabel = ml.topLabels[0]?.label ?? "no disease";
+      const cleanedLabel = rawLabel.split("___")[1]?.replace(/_/g, " ") ?? rawLabel.replace(/_/g, " ");
+      toast("success", "Analysis complete!", `Detected: ${cleanedLabel}`);
+      
     } catch (err: unknown) {
       console.error("[try]", err);
       setState("error");
@@ -146,8 +162,7 @@ export default function TryPage() {
               </div>
             )}
           </div>
-
-          
+        </div>
 
         {/* Right: Results */}
         <div className="space-y-6">
@@ -158,7 +173,8 @@ export default function TryPage() {
                 <h2 className="text-base font-semibold text-gray-800 mb-4">Detection Results</h2>
                 <DetectionCanvas
                   imageUrl={result.imageUrl}
-                  detections={state === "detecting" ? [] : result.ml.detections}
+                  // Clean fallback passed down to canvas renderer
+                  detections={state === "detecting" ? [] : (result.ml.detections || [])}
                 />
                 {state !== "detecting" && (
                   <div className="mt-4">
